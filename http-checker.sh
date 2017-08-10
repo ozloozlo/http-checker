@@ -7,6 +7,7 @@
 LOG_DIR="/var/log"
 LOG_FILE="$(date +'%Y-%m-%d')-http-checker.log"
 SENDER_EMAIL="sender@email.com"
+TIMEOUT=600
 
 ##############
 # THE SCRIPT #
@@ -58,7 +59,7 @@ else
       echo $TIMESTAMP "Site $HOST returned status $CURL_REQUEST" >> /tmp/mail_template
       cat /tmp/mail_template |   sendmail $ADMINS_EMAIL
     fi
-    sleep 600
+    sleep $TIMEOUT
   done
 fi
 
